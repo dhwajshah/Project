@@ -37,21 +37,6 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Quick Links</h3>
-          <ul className="flex flex-wrap items-center text-sm font-medium text-gray-500 dark:text-gray-400">
-            <li>
-              <a href="/#" className="hover:underline me-4 md:me-6">Latest Movies</a>
-            </li>
-            <li>
-              <a href="/#" className="hover:underline me-4 md:me-6">Top Rated</a>
-            </li>
-            <li>
-              <a href="/#" className="hover:underline">Genres</a>
-            </li>
-          </ul>
-        </div>        
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2024{" "}

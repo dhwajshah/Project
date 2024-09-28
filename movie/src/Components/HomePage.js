@@ -1,51 +1,112 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardMedia, Typography, Grid, Box } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Grid,
+  Box,
+} from "@mui/material";
 
 const movies = [
   {
     id: 1,
     title: "Kalki 2898 AD",
-    poster: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kalki-2898-ad-et00352941-1718275859.jpg", // Replace with actual movie poster URL
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kalki-2898-ad-et00352941-1718275859.jpg", // Replace with actual movie poster URL
   },
   {
     id: 2,
     title: "Kill",
-    poster: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kill-et00374797-1718179453.jpg",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kill-et00374797-1718179453.jpg",
+  },
+  {
+    id: 3,
+    title: "Stree 2",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/stree-2-et00364249-1721725490.jpg", // Replace with actual movie poster URL
+  },
+  {
+    id: 4,
+    title: "Fakt Purush Mate",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/fakt-purusho-maate-et00396495-1720420947.jpg",
+  },
+  {
+    id: 5,
+    title: "Khel Khel Mein",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/khel-khel-mein-et00399518-1722516491.jpg",
+  },
+  {
+    id: 6,
+    title: "Vedaa",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/vedaa-et00386426-1723550870.jpg",
+  },
+  {
+    id: 7,
+    title: "Thalapathy is the G.O.A.T.",
+    poster:
+          "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/thalapathy-is-the-goat-et00401441-1725014881.jpg", // Replace with actual movie poster URL
+  },
+  {
+    id: 8,
+    title: "Kahan Shuru Kahan Khatam",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kahan-shuru-kahan-khatam-et00408945-1725623704.jpg",
+  },
+  {
+    id: 9,
+    title: "Devara - Part 1",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devara--part-1-et00310216-1712750637.jpg", // Replace with actual movie poster URL
+  },
+  {
+    id: 10,
+    title: "Locha Laapsi",
+    poster:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/locha-laapsi-et00410671-1725456396.jpg",
   },
   // Add more movie objects here
 ];
 
 const HomePage = () => {
-    return (
-      <Box sx={{ padding: "20px" }}>
-        <Grid container spacing={1}>
-          {movies.map((movie) => (
-            <Grid item xs={6} sm={4} md={3} key={movie.id}>
-              <Link to={`/movies/${movie.id}`} style={{ textDecoration: "none" }}>
-                <Card sx={{ maxWidth: 200, margin: "auto", padding: "auto" }}>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={movie.poster}
-                    alt={movie.title}
-                    sx={{ objectFit: "cover" }}
-                  />
-                  <CardContent>
-                    <Typography variant="h6" component="div" sx={{ fontSize: "20px" }}>
-                      {movie.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {movie.genre}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Link>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    );
-  };
-  
+  return (
+    <Box sx={{ padding: "20px" }}>
+      <Grid container spacing={5}>
+        {movies.map((movie) => (
+          <Grid item xs={6} sm={4} md={2.3} key={movie.id}>
+            <Link to={`/movies/${movie.id}`} style={{ textDecoration: "none" }}>
+              <Card sx={{ maxWidth: 200, margin: "auto", padding: "auto" }}>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={movie.poster}
+                  alt={movie.title}
+                  sx={{ objectFit: "cover" }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{ fontSize: "20px" }}
+                  >
+                    {movie.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {movie.genre}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Link>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+};
+
 export default HomePage;
