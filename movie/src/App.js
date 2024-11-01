@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -12,8 +12,8 @@ import TermsOfService from "./Components/TermsOfService";
 import HomePage from "./Components/HomePage";
 import MovieDetailPage from "./Components/MovieDetailPage";
 import SearchResults from "./Components/SearchResults";
+import PrivateRoute from "./Components/PrivateRoute"; // Import PrivateRoute
 
-// Dummy movies data
 const initialMovies = [
   { id: 1, title: "Kalki 2898 AD", imageUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kalki-2898-ad-et00352941-1718275859.jpg" },
   { id: 2, title: "Kill", imageUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kill-et00374797-1718179453.jpg" },
@@ -65,11 +65,37 @@ const initialMovies = [
     imageUrl:
       "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/locha-laapsi-et00410671-1725456396.jpg",
   }, // Add more movie objects as needed
+
 ];
+
 
 function App() {
   const [movies, setMovies] = useState(initialMovies);
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
+  const [username, setUsername] = useState(null); // Track logged-in username
+
+  // Check localStorage for token and username when the app initializes
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const storedUsername = localStorage.getItem("username");
+    if (token) {
+      setIsLoggedIn(true);
+      setUsername(storedUsername);
+    }
+  }, []);
+
+  const handleLogin = (username) => {
+    setIsLoggedIn(true);
+    setUsername(username);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+    setUsername(null);
+  };
 
   const handleSearch = (query) => {
     const filteredMovies = initialMovies.filter((movie) =>
@@ -82,20 +108,34 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <header>
-          <Navbar onSearch={handleSearch} />
+          <Navbar 
+            isLoggedIn={isLoggedIn} 
+            username={username} 
+            onSearch={handleSearch} 
+            onLogout={handleLogout} 
+          />
         </header>
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<HomePage movies={movies} />} />
+            <Route
+              path="/"
+              element={
+                <PrivateRoute isLoggedIn={isLoggedIn}>
+                  <HomePage movies={movies} />
+                </PrivateRoute>
+              }
+            />
             <Route path="/movies/:id" element={<MovieDetailPage />} />
             <Route path="/About" element={<AboutUs />} />
             <Route path="/SignUpPage" element={<SignUpPage />} />
-            <Route path="/LoginPage" element={<LoginPage />} />
+            <Route
+              path="/LoginPage"
+              element={<LoginPage onLogin={handleLogin} />}
+            />
             <Route path="/ContactPage" element={<ContactPage />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
             <Route path="/TermsOfService" element={<TermsOfService />} />
             <Route path="/search" element={<SearchResults movies={searchResults} />} />
-            {/* Add other routes here */}
           </Routes>
         </main>
         <footer>

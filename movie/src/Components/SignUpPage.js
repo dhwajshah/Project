@@ -16,33 +16,52 @@ function SignUpPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // Function to validate email format
   const validateEmail = (email) => {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
   };
 
-  const handleSignUp = (event) => {
+  // Handle form submission for signup
+  const handleSignUp = async (event) => {
     event.preventDefault();
     setError("");
 
-    // Validate input fields
+    // Check if all fields are filled
     if (!username || !email || !password) {
       setError("All fields are required.");
       return;
     }
 
+    // Validate email format
     if (!validateEmail(email)) {
       setError("Invalid email address.");
       return;
     }
 
-    // Handle signup logic here
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
+    try {
+      // Send signup data to the backend API
+      const response = await fetch('http://localhost:3001/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password })
+      });
 
-    // After signup, navigate to home page or login page
-    navigate("/");
+      // Parse response
+      const data = await response.json();
+
+      // Handle successful signup
+      if (response.ok) {
+        // Navigate to the login page or home page after signup
+        navigate('/');
+      } else {
+        // Show error message from the server response
+        setError(data.message);
+      }
+    } catch (error) {
+      // Handle network errors or other failures
+      setError('Failed to sign up. Try again later.');
+    }
   };
 
   return (

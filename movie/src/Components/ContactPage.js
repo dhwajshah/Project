@@ -13,13 +13,11 @@ function ContactPage() {
     return re.test(email);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Reset success and error messages
     setSuccess(false);
     setError("");
 
-    // Validate form fields
     if (!name || !email || !message) {
       setError("All fields are required.");
       return;
@@ -30,16 +28,27 @@ function ContactPage() {
       return;
     }
 
-    // Simulate sending form data to an API
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Message:", message);
+    try {
+      const response = await fetch("http://localhost:3001/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-    // Clear the form and show success message
-    setName("");
-    setEmail("");
-    setMessage("");
-    setSuccess(true);
+      if (response.ok) {
+        setName("");
+        setEmail("");
+        setMessage("");
+        setSuccess(true);
+      } else {
+        const data = await response.json();
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setError("Failed to send message. Please try again later.");
+    }
   };
 
   return (

@@ -1,13 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Grid,
-  Box,
-} from "@mui/material";
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Card, CardContent, CardMedia, Typography, Grid, Box, Button } from "@mui/material";
 
 const movies = [
   {
@@ -73,9 +67,37 @@ const movies = [
   // Add more movie objects here
 ];
 
+
 const HomePage = () => {
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch the username and token from localStorage
+    const savedUsername = localStorage.getItem("username");
+    const token = localStorage.getItem("token");
+
+    // If no username or token is found, redirect to login page
+    if (!savedUsername || !token) {
+      navigate("/LoginPage");
+    } else {
+      // Reload the browser after successful login
+        
+      setUsername(savedUsername);
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    // Clear the token and username on logout
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    navigate("/LoginPage");
+  };
+
   return (
+    
     <Box sx={{ padding: "20px" }}>
+     
       <Grid container spacing={5}>
         {movies.map((movie) => (
           <Grid item xs={6} sm={4} md={2.3} key={movie.id}>
@@ -89,15 +111,8 @@ const HomePage = () => {
                   sx={{ objectFit: "cover" }}
                 />
                 <CardContent>
-                  <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{ fontSize: "20px" }}
-                  >
+                  <Typography variant="h6" component="div" sx={{ fontSize: "20px" }}>
                     {movie.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {movie.genre}
                   </Typography>
                 </CardContent>
               </Card>

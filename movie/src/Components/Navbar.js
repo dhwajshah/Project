@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [username, setUsername] = useState(null); // To track the username
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Get the token and username from localStorage
+    const savedUsername = localStorage.getItem("username");
+    const token = localStorage.getItem("token");
+
+    if (savedUsername && token) {
+      setUsername(savedUsername); // Set the username if the user is logged in
+    }
+  }, []);
 
   const handleLogin = () => {
     navigate("/LoginPage");
@@ -11,6 +22,14 @@ const Navbar = ({ onSearch }) => {
 
   const handleSignUp = () => {
     navigate("/SignUpPage");
+  };
+
+  const handleLogout = () => {
+    // Clear the token and username from localStorage and update the state
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setUsername(null);
+    navigate("/LoginPage");
   };
 
   const handleSearch = (event) => {
@@ -46,21 +65,36 @@ const Navbar = ({ onSearch }) => {
               Search
             </button>
           </form>
-          <button
-            type="button"
-            className="focus:outline-none text-white bg-white-700 hover:bg-white-800 focus:ring-4 focus:ring-white-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-white-700 dark:focus:ring-white-900"
-            onClick={handleLogin}
-          >
-            Login
-          </button>
 
-          <button
-            type="button"
-            className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-            onClick={handleSignUp}
-          >
-            Sign Up
-          </button>
+          {username ? (
+            <>
+              <span className="text-white">Welcome, {username}!</span>
+              <button
+                type="button"
+                className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="focus:outline-none text-white bg-white-700 hover:bg-white-800 focus:ring-4 focus:ring-white-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-white-700 dark:focus:ring-white-900"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+                onClick={handleSignUp}
+              >
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
 
         <div
