@@ -24,9 +24,9 @@ const movies = [
   },
   {
     id: 4,
-    title: "Fakt Purush Mate",
+    title: "Bad Newz",
     poster:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/fakt-purusho-maate-et00396495-1720420947.jpg",
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/bad-newz-et00391805-1721214274.jpg",
   },
   {
     id: 5,
@@ -36,9 +36,9 @@ const movies = [
   },
   {
     id: 6,
-    title: "Vedaa",
+    title: "Joker",
     poster:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/vedaa-et00386426-1723550870.jpg",
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/joker-folie-a-deux-et00352820-1730374353.jpg",
   },
   {
     id: 7,
@@ -54,15 +54,15 @@ const movies = [
   },
   {
     id: 9,
-    title: "Devara - Part 1",
+    title: "Auron Mein Kahan Dum Tha",
     poster:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devara--part-1-et00310216-1712750637.jpg", // Replace with actual movie poster URL
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/auron-mein-kahan-dum-tha-et00378240-1722408422.jpg", // Replace with actual movie poster URL
   },
   {
     id: 10,
-    title: "Locha Laapsi",
+    title: "Vedaa",
     poster:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/locha-laapsi-et00410671-1725456396.jpg",
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/vedaa-et00386426-1723550870.jpg",
   },
   // Add more movie objects here
 ];

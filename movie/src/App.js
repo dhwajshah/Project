@@ -15,8 +15,18 @@ import SearchResults from "./Components/SearchResults";
 import PrivateRoute from "./Components/PrivateRoute"; // Import PrivateRoute
 
 const initialMovies = [
-  { id: 1, title: "Kalki 2898 AD", imageUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kalki-2898-ad-et00352941-1718275859.jpg" },
-  { id: 2, title: "Kill", imageUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kill-et00374797-1718179453.jpg" },
+  {
+    id: 1,
+    title: "Kalki 2898 AD",
+    imageUrl:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kalki-2898-ad-et00352941-1718275859.jpg", // Replace with actual movie imageUrl URL
+  },
+  {
+    id: 2,
+    title: "Kill",
+    imageUrl:
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kill-et00374797-1718179453.jpg",
+  },
   {
     id: 3,
     title: "Stree 2",
@@ -25,9 +35,9 @@ const initialMovies = [
   },
   {
     id: 4,
-    title: "Fakt Purush Mate",
+    title: "Bad Newz",
     imageUrl:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/fakt-purusho-maate-et00396495-1720420947.jpg",
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/bad-newz-et00391805-1721214274.jpg",
   },
   {
     id: 5,
@@ -37,9 +47,9 @@ const initialMovies = [
   },
   {
     id: 6,
-    title: "Vedaa",
+    title: "Joker",
     imageUrl:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/vedaa-et00386426-1723550870.jpg",
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/joker-folie-a-deux-et00352820-1730374353.jpg",
   },
   {
     id: 7,
@@ -55,15 +65,15 @@ const initialMovies = [
   },
   {
     id: 9,
-    title: "Devara - Part 1",
+    title: "Auron Mein Kahan Dum Tha",
     imageUrl:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devara--part-1-et00310216-1712750637.jpg", // Replace with actual movie imageUrl URL
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/auron-mein-kahan-dum-tha-et00378240-1722408422.jpg", // Replace with actual movie imageUrl URL
   },
   {
     id: 10,
-    title: "Locha Laapsi",
+    title: "Vedaa",
     imageUrl:
-      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/locha-laapsi-et00410671-1725456396.jpg",
+      "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/vedaa-et00386426-1723550870.jpg",
   }, // Add more movie objects as needed
 
 ];
