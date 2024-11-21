@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Box, TextField, Button, Typography, Alert } from "@mui/material";
+import { Container, Box, TextField, Button, Typography, Alert, Paper } from "@mui/material";
 
 function ContactPage() {
   const [name, setName] = useState("");
@@ -52,19 +52,21 @@ function ContactPage() {
   };
 
   return (
-    <Container>
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
+    <Container maxWidth="sm" sx={{ mt: 10, mb: 10 }}>
+      <Paper
+        elevation={4}
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          mt: 8,
+          p: 4,
+          borderRadius: 3,
+          background: "linear-gradient(145deg, #ffffff, #f0f0f0)",
+          boxShadow: "5px 5px 10px #d3d3d3, -5px -5px 10px #ffffff",
         }}
       >
-        <Typography variant="h3" component="h1" gutterBottom>
-          Contact Us
+        <Typography variant="h4" component="h1" textAlign="center" gutterBottom sx={{ fontWeight: "bold" }}>
+          Get in Touch
+        </Typography>
+        <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 3 }}>
+          We'd love to hear from you! Fill out the form below, and we'll get back to you as soon as possible.
         </Typography>
 
         {error && (
@@ -79,35 +81,55 @@ function ContactPage() {
           </Alert>
         )}
 
-        <TextField
-          label="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          margin="normal"
-          fullWidth
-        />
-        <TextField
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          margin="normal"
-          fullWidth
-        />
-        <TextField
-          label="Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          margin="normal"
-          fullWidth
-          multiline
-          rows={4}
-        />
+        <Box component="form" onSubmit={handleSubmit}>
+          <TextField
+            label="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Email Address"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Your Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            margin="normal"
+            fullWidth
+            multiline
+            rows={4}
+            variant="outlined"
+            sx={{ mb: 3 }}
+          />
 
-        <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
-          Send Message
-        </Button>
-      </Box>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            size="large"
+            sx={{
+              backgroundColor: "#1976d2",
+              "&:hover": {
+                backgroundColor: "#115293",
+              },
+            }}
+          >
+            Send Message
+          </Button>
+        </Box>
+      </Paper>
     </Container>
   );
 }

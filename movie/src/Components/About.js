@@ -1,71 +1,112 @@
-import React from 'react';
-
+import React from "react";
 const About = () => {
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
-      <div className="container max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-lg">
-        <h1 className="mb-4 text-3xl font-bold text-gray-800">About Us</h1>
-        <p className="mb-4 text-gray-700">
-          Welcome to FilmVibe, where we are dedicated to bringing you the best in entertainment. Our team of passionate FilmVibe enthusiasts is committed to providing you with the latest news, reviews, and insights into the world of cinema.
-        </p>
-        <p className="mb-4 text-gray-700">
-          Our mission is to create a space where FilmVibe lovers can connect, share their thoughts, and stay updated on their favorite films. Whether you're here to find the latest blockbuster hits or discover hidden gems, we've got you covered.
-        </p>
-        <p className="mb-4 text-gray-700">
-          Founded in 2024, FilmVibe started with a simple goal to offer a user-friendly platform for FilmVibe enthusiasts to explore and enjoy content related to their favorite films. Since then, we have grown into a vibrant community of FilmVibe lovers from around the world.
-        </p>
-        <p className="text-gray-700">
-          Thank you for visiting FilmVibe. We hope you enjoy your time here and find everything you're looking for. If you have any questions or feedback, feel free to <a href="mailto:contact@FilmVibe.com" className="text-blue-500 hover:underline">contact us</a>.
-        </p>
-
-        <div className="mt-8">
-          <h2 className="mb-4 text-2xl font-bold text-gray-800">Our Team</h2>
-          <p className="mb-4 text-gray-700">
-            Meet the dedicated team behind FilmVibe. Our team members are avid FilmVibe lovers and industry experts who work tirelessly to bring you the best content.
+    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300">
+      {/* Hero Section */}
+      <section className="flex items-center justify-center py-16 bg-blue-500">
+        <div className="text-center text-white">
+          <h1 className="text-4xl font-extrabold">About FilmVibe</h1>
+          <p className="mt-4 text-lg">
+            Your ultimate destination for exploring, connecting, and enjoying
+            the world of cinema.
           </p>
-          <ul className="mb-4 text-gray-700 list-disc list-inside">
-            <li>Faizan Khimani : Founder</li>
-            <li>Dhwaj Shah : Co-Founder</li>
-          </ul>
         </div>
+      </section>
 
-        <div className="mt-8">
-          <h2 className="mb-4 text-2xl font-bold text-gray-800">Testimonials</h2>
-          <p className="mb-4 text-gray-700">
-            Hear what our users have to say about FilmVibe.
+      {/* Mission Section */}
+      <section className="py-16 bg-white">
+        <div className="container max-w-5xl px-6 mx-auto text-center">
+          <h2 className="text-3xl font-bold text-gray-800">Our Mission</h2>
+          <p className="mt-4 text-gray-600">
+            At FilmVibe, our mission is to provide a space for movie enthusiasts
+            to explore, discuss, and celebrate the magic of cinema. From
+            Hollywood blockbusters to indie films, we aim to cater to the
+            diverse tastes of our vibrant community.
           </p>
-          <div className="mb-4 text-gray-700">
-            <blockquote className="p-4 italic border-l-4 border-blue-500">
-              "FilmVibe is my go-to source for FilmVibe news and reviews. The team is knowledgeable and the content is always top-notch!" - Sarah W.
-            </blockquote>
+          <p className="mt-4 text-gray-600">
+            We believe movies are more than just entertainment; they are stories
+            that connect us, inspire us, and bring us closer together. FilmVibe
+            is dedicated to creating a platform where every movie lover can find
+            something to cherish.
+          </p>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container max-w-5xl px-6 mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            Meet Our Team
+          </h2>
+          <p className="text-center mt-4 text-gray-600">
+            Behind FilmVibe is a passionate team of movie buffs and tech
+            enthusiasts who work tirelessly to bring you an incredible
+            experience.
+          </p>
+          <div className="grid gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-2 justify-center">
+            <div className="p-6 bg-white rounded-lg shadow flex flex-col items-center text-center">
+              <h3 className="text-xl font-bold text-gray-800">
+                Faizan Khimani
+              </h3>
+              <p className="mt-2 text-gray-600">Founder</p>
+              <p className="mt-2 text-sm text-gray-500">
+                Faizan is the visionary behind FilmVibe. A cinephile at heart,
+                he loves exploring world cinema and sharing his insights with
+                others.
+              </p>
+            </div>
+            <div className="p-6 bg-white rounded-lg shadow flex flex-col items-center text-center">
+              <h3 className="text-xl font-bold text-gray-800">Dhwaj Shah</h3>
+              <p className="mt-2 text-gray-600">Co-Founder</p>
+              <p className="mt-2 text-sm text-gray-500">
+                Dhwaj combines his passion for movies with his technical
+                expertise to ensure FilmVibe is always at its best.
+              </p>
+            </div>
           </div>
-          <div className="mb-4 text-gray-700">
-            <blockquote className="p-4 italic border-l-4 border-blue-500">
-              "I love the community aspect of FilmVibe. It's great to connect with other FilmVibe enthusiasts and share our thoughts." - David K.
-            </blockquote>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-white">
+        <div className="container max-w-5xl px-6 mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            What Our Users Say
+          </h2>
+          <p className="text-center mt-4 text-gray-600">
+            Our community loves FilmVibe! Here's what some of them have to say:
+          </p>
+          <div className="mt-8 space-y-6">
+            <div className="p-6 bg-gray-100 rounded-lg">
+              <blockquote className="italic text-gray-600">
+                "FilmVibe is my go-to source for movie news and reviews. The
+                team always delivers exceptional content!"
+                <span className="block mt-4 font-bold text-gray-800">
+                  - Sarah W.
+                </span>
+              </blockquote>
+            </div>
+            <div className="p-6 bg-gray-100 rounded-lg">
+              <blockquote className="italic text-gray-600">
+                "I love the community at FilmVibe. It's amazing to share
+                thoughts with like-minded film lovers!"
+                <span className="block mt-4 font-bold text-gray-800">
+                  - David K.
+                </span>
+              </blockquote>
+            </div>
+            <div className="p-6 bg-gray-100 rounded-lg">
+              <blockquote className="italic text-gray-600">
+                "Discovering hidden gems on FilmVibe has been an absolute joy.
+                It’s a must-visit for any movie fan."
+                <span className="block mt-4 font-bold text-gray-800">
+                  - Priya M.
+                </span>
+              </blockquote>
+            </div>
           </div>
         </div>
-
-        <div className="mt-8">
-          <h2 className="mb-4 text-2xl font-bold text-gray-800">Join Our Community</h2>
-          <p className="mb-4 text-gray-700">
-            Become a part of our growing community of FilmVibe lovers. Sign up for our newsletter to stay updated on the latest news, reviews, and more.
-          </p>
-          <form className="flex flex-col items-center">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };

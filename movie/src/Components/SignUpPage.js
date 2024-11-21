@@ -7,6 +7,7 @@ import {
   Box,
   Typography,
   Alert,
+  Paper,
 } from "@mui/material";
 
 function SignUpPage() {
@@ -16,68 +17,71 @@ function SignUpPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Function to validate email format
   const validateEmail = (email) => {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
   };
 
-  // Handle form submission for signup
   const handleSignUp = async (event) => {
     event.preventDefault();
     setError("");
 
-    // Check if all fields are filled
     if (!username || !email || !password) {
       setError("All fields are required.");
       return;
     }
 
-    // Validate email format
     if (!validateEmail(email)) {
       setError("Invalid email address.");
       return;
     }
 
     try {
-      // Send signup data to the backend API
-      const response = await fetch('http://localhost:3001/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password })
+      const response = await fetch("http://localhost:3001/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
       });
 
-      // Parse response
       const data = await response.json();
 
-      // Handle successful signup
       if (response.ok) {
-        // Navigate to the login page or home page after signup
-        navigate('/');
+        navigate("/");
       } else {
-        // Show error message from the server response
         setError(data.message);
       }
     } catch (error) {
-      // Handle network errors or other failures
-      setError('Failed to sign up. Try again later.');
+      setError("Failed to sign up. Try again later.");
     }
   };
 
   return (
-    <Container>
-      <Box
-        component="form"
-        onSubmit={handleSignUp}
+    <Container maxWidth="sm" sx={{ mt: 8, mb: 8 }}>
+      <Paper
+        elevation={4}
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          mt: 8,
+          p: 4,
+          borderRadius: 3,
+          background: "linear-gradient(145deg, #ffffff, #f0f0f0)",
+          boxShadow: "5px 5px 10px #d3d3d3, -5px -5px 10px #ffffff",
         }}
       >
-        <Typography variant="h3" component="h1" gutterBottom>
-          Sign Up
+        <Typography
+          variant="h4"
+          component="h1"
+          textAlign="center"
+          gutterBottom
+          sx={{ fontWeight: "bold" }}
+        >
+          Create Your Account
+        </Typography>
+        <Typography
+          variant="body1"
+          textAlign="center"
+          color="text.secondary"
+          sx={{ mb: 3 }}
+        >
+          Join us and start exploring today!
         </Typography>
 
         {error && (
@@ -86,39 +90,56 @@ function SignUpPage() {
           </Alert>
         )}
 
-        <TextField
-          label="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          margin="normal"
-          fullWidth
-        />
-        <TextField
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          margin="normal"
-          fullWidth
-        />
-        <TextField
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          margin="normal"
-          fullWidth
-        />
-
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          sx={{ mt: 2 }}
+        <Box
+          component="form"
+          onSubmit={handleSignUp}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
         >
-          Sign Up
-        </Button>
-      </Box>
+          <TextField
+            label="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            fullWidth
+            variant="outlined"
+          />
+          <TextField
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            fullWidth
+            variant="outlined"
+          />
+          <TextField
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+            variant="outlined"
+          />
+
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            fullWidth
+            sx={{
+              mt: 2,
+              backgroundColor: "#1976d2",
+              "&:hover": {
+                backgroundColor: "#115293",
+              },
+            }}
+          >
+            Sign Up
+          </Button>
+        </Box>
+      </Paper>
     </Container>
   );
 }
